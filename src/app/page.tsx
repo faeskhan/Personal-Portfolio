@@ -24,6 +24,12 @@ export default function Portfolio() {
   const { isDarkMode, toggleTheme } = useTheme()
 
   useEffect(() => {
+    // Reset scroll position to the top and active section
+    window.scrollTo(0, 0);
+    setActiveSection('home');
+  }, []);
+
+  useEffect(() => {
     const handleScroll = () => {
       const sections = ['home', 'about', 'education', 'experience', 'skills', 'projects', 'certifications']
       const currentSection = sections.find(section => {
