@@ -1,12 +1,8 @@
 {
   "scripts": {
-<<<<<<< HEAD
-    "dev": "next dev"
-=======
     "dev": "next dev",
     "build": "next build",
     "start": "next start"
->>>>>>> d105d41 (commit 1)
   },
   "devDependencies": {
     "autoprefixer": "^10.4.20",
@@ -15,12 +11,9 @@
   },
   "dependencies": {
     "@emailjs/nodejs": "^5.0.2",
-<<<<<<< HEAD
-=======
     "next": "^15.0.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
->>>>>>> d105d41 (commit 1)
     "react-tsparticles": "^2.12.2",
     "tsparticles": "^3.5.0"
   }
