@@ -56,3 +56,34 @@
   border-radius: 20px;
   border: transparent;
 }
+
+/* Base styles for all devices */
+body {
+    font-size: 16px; /* Base font size */
+}
+
+/* Styles for tablets and larger devices */
+@media (min-width: 768px) {
+    body {
+        font-size: 18px; /* Larger font size for tablets and up */
+    }
+}
+
+/* Styles for mobile devices */
+@media (max-width: 767px) {
+    body {
+        font-size: 14px; /* Smaller font size for mobile */
+    }
+
+    /* Adjust images */
+    img {
+        max-width: 100%; /* Make images responsive */
+        height: auto; /* Maintain aspect ratio */
+    }
+
+    /* Adjust toggle sizes */
+    .toggle {
+        width: 100%; /* Full width for toggles */
+        padding: 10px; /* Adjust padding */
+    }
+}
