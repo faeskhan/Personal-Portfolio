@@ -131,13 +131,14 @@ img {
     margin: 0 auto; /* Center the button */
   }
   nav {
-    position: fixed;
+    display: none; /* Hide the nav by default */
+    position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
-    padding: 0.5rem 1rem; /* Adjust padding */
-    z-index: 50; /* Ensure it stays on top */
+    background-color: rgba(0, 0, 0, 0.9);
+    padding: 1rem;
+    z-index: 50;
   }
   nav ul {
     display: flex;
@@ -153,6 +154,43 @@ img {
     font-size: 0.875rem; /* Smaller font size */
     padding: 0.25rem 0.5rem; /* Adjust padding */
   }
+  .nav-open {
+    display: block; /* Show the nav when open */
+  }
+  
+}
+
+.navbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #333;
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+  border-radius: 20px 20px 0 0;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  font-size: 24px;
+}
+
+.navbar a:hover {
+  color: #ddd;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #444;
 }
 
 /* Center the icons in the footer */
