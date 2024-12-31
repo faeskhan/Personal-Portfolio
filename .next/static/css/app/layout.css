@@ -590,9 +590,6 @@ video {
 .min-h-screen {
   min-height: 100vh;
 }
-.w-\[92rem\] {
-  width: 92rem;
-}
 .w-full {
   width: 100%;
 }
@@ -1041,74 +1038,130 @@ video {
   border: transparent;
 }
 
+/* Base styles for all devices */
+body {
+    font-size: 16px; /* Base font size */
+}
+
+/* Styles for tablets and larger devices */
+@media (min-width: 768px) {
+    body {
+        font-size: 18px; /* Larger font size for tablets and up */
+    }
+}
+
+/* Styles for mobile devices */
+@media (max-width: 767px) {
+    body {
+        font-size: 14px; /* Smaller font size for mobile */
+    }
+
+    /* Adjust images */
+    img {
+        max-width: 100%; /* Make images responsive */
+        height: auto; /* Maintain aspect ratio */
+    }
+
+    /* Adjust toggle sizes */
+    .toggle {
+        width: 100%; /* Full width for toggles */
+        padding: 10px; /* Adjust padding */
+    }
+}
+
+.share-tech-mono-regular {
+  font-family: "Share Tech Mono", monospace;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Ensure images are responsive */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Use media queries for responsive design */
+@media (max-width: 768px) {
+  .text-4xl {
+    font-size: 2rem; /* Adjust font size for smaller screens */
+  }
+  .sm\:text-6xl {
+    font-size: 3rem; /* Adjust font size for smaller screens */
+  }
+  .flex {
+    flex-direction: column; /* Stack elements vertically on smaller screens */
+  }
+  .space-x-4 {
+    margin-right: 0; /* Remove horizontal spacing */
+  }
+  .space-y-4 {
+    margin-bottom: 1rem; /* Add vertical spacing */
+  }
+  .p-8 {
+    padding: 1rem; /* Reduce padding */
+  }
+  .custom-width {
+    width: 100%; /* Make width responsive */
+  }
+  .min-h-screen {
+    min-height: 100vh; /* Ensure full height on smaller screens */
+  }
+}
 .hover\:bg-opacity-70:hover {
   --tw-bg-opacity: 0.7;
 }
-
 .hover\:from-pink-600:hover {
   --tw-gradient-from: #db2777 var(--tw-gradient-from-position);
   --tw-gradient-to: rgb(219 39 119 / 0) var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
-
 .hover\:from-red-700:hover {
   --tw-gradient-from: #b91c1c var(--tw-gradient-from-position);
   --tw-gradient-to: rgb(185 28 28 / 0) var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
-
 .hover\:to-orange-500:hover {
   --tw-gradient-to: #f97316 var(--tw-gradient-to-position);
 }
-
 .hover\:to-violet-600:hover {
   --tw-gradient-to: #7c3aed var(--tw-gradient-to-position);
 }
-
 .hover\:text-orange-400:hover {
   --tw-text-opacity: 1;
   color: rgb(251 146 60 / var(--tw-text-opacity));
 }
-
 .hover\:text-pink-300:hover {
   --tw-text-opacity: 1;
   color: rgb(249 168 212 / var(--tw-text-opacity));
 }
-
 .hover\:text-pink-400:hover {
   --tw-text-opacity: 1;
   color: rgb(244 114 182 / var(--tw-text-opacity));
 }
-
 .hover\:text-white:hover {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
-
 .focus\:border-transparent:focus {
   border-color: transparent;
 }
-
 .focus\:outline-none:focus {
   outline: 2px solid transparent;
   outline-offset: 2px;
 }
-
 .focus\:ring-2:focus {
   --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
   --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
   box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
 }
-
 .focus\:ring-pink-500:focus {
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(236 72 153 / var(--tw-ring-opacity));
 }
-
 .focus\:ring-offset-2:focus {
   --tw-ring-offset-width: 2px;
 }
-
 @media (min-width: 640px) {
 
   .sm\:text-2xl {
@@ -1126,8 +1179,11 @@ video {
     line-height: 1;
   }
 }
-
 @media (min-width: 768px) {
+
+  .md\:w-\[92rem\] {
+    width: 92rem;
+  }
 
   .md\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1146,6 +1202,7 @@ video {
     padding-right: 2rem;
   }
 }
+
 /*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[2].use[1]!./node_modules/next/dist/build/webpack/loaders/next-font-loader/index.js??ruleSet[1].rules[13].oneOf[2].use[2]!./node_modules/next/font/google/target.css?{"path":"src\\app\\layout.tsx","import":"Inter","arguments":[{"subsets":["latin"]}],"variableName":"inter"} ***!
   \**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/

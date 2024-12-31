@@ -13,7 +13,7 @@ export default function Portfolio() {
   const { scrollYProgress } = useScroll()
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
-    damping: 30,
+    damping: 30, 
     restDelta: 0.001
   })
 
@@ -173,7 +173,7 @@ export default function Portfolio() {
                     initial={{ opacity: 0, width: 0 }}
                     animate={{ opacity: 1, width: "auto" }}
                     transition={{ duration: 2, ease: "easeInOut" }}
-                    className={`text-3xl sm:text-5xl font-bold mb-4 bg-clip-text text-transparent ${
+                    className={`text-4xl sm:text-6xl font-bold mb-4 bg-clip-text text-transparent ${
                       isDarkMode 
                         ? 'bg-gradient-to-r from-pink-500 to-violet-500'
                         : 'bg-gradient-to-r from-red-600 to-orange-400'
@@ -235,7 +235,7 @@ export default function Portfolio() {
               initial={{ opacity: 0, scale: 0.5 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5 }}
-              className="relative aspect-square w-[92rem]"
+              className="relative aspect-square w-full md:w-[92rem]"
             >
               <Image
                 src="/images/pfp.jpg"
@@ -254,7 +254,7 @@ export default function Portfolio() {
                   isDarkMode ? 'text-gray-300' : 'text-black'
                 }`}
               >
-                I'm a passionate Computer Science graduate with a keen interest in full-stack development, cloud solutions, and atificial intelligence. 
+                I'm a passionate Computer Science graduate with a keen interest in full-stack development, cloud solutions, and artificial intelligence. 
                 With a strong foundation in algorithms, data structures, and software engineering principles, I strive to create 
                 efficient and innovative solutions to complex problems. My goal is to contribute to cutting-edge projects that 
                 push the boundaries of technology and make a positive impact in the IT industry.
@@ -267,9 +267,9 @@ export default function Portfolio() {
                   isDarkMode ? 'text-gray-300' : 'text-black'
                 }`}
               >
-                I’ve gained hands-on experience as a Full Stack Systems Administrator and Junior Software Developer, 
+                I've gained hands-on experience as a Full Stack Systems Administrator and Junior Software Developer, 
                 working on front-end and back-end projects with frameworks like Django and Vue.js. 
-                With certifications in AWS and ITIL, I’m passionate about building innovative solutions and thrive in collaborative, 
+                With certifications in AWS and ITIL, I'm passionate about building innovative solutions and thrive in collaborative, 
                 fast-paced environments.
               </motion.p>
               <motion.p

@@ -87,3 +87,43 @@ body {
         padding: 10px; /* Adjust padding */
     }
 }
+
+.share-tech-mono-regular {
+  font-family: "Share Tech Mono", monospace;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Ensure images are responsive */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Use media queries for responsive design */
+@media (max-width: 768px) {
+  .text-4xl {
+    font-size: 2rem; /* Adjust font size for smaller screens */
+  }
+  .sm\:text-6xl {
+    font-size: 3rem; /* Adjust font size for smaller screens */
+  }
+  .flex {
+    flex-direction: column; /* Stack elements vertically on smaller screens */
+  }
+  .space-x-4 {
+    margin-right: 0; /* Remove horizontal spacing */
+  }
+  .space-y-4 {
+    margin-bottom: 1rem; /* Add vertical spacing */
+  }
+  .p-8 {
+    padding: 1rem; /* Reduce padding */
+  }
+  .custom-width {
+    width: 100%; /* Make width responsive */
+  }
+  .min-h-screen {
+    min-height: 100vh; /* Ensure full height on smaller screens */
+  }
+}
