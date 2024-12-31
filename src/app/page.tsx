@@ -8,6 +8,7 @@ import Image from 'next/image'
 import { useTheme } from './ThemeContext'
 import { Sun, Moon } from 'lucide-react'
 import { MatrixRain } from '../components/MatrixRain'
+import Head from 'next/head'
 
 export default function Portfolio() {
   const { scrollYProgress } = useScroll()
@@ -73,409 +74,414 @@ export default function Portfolio() {
   };
 
   return (
-    <div className={`${
-      isDarkMode 
-        ? 'bg-gradient-to-br from-black via-blue-950 to-black' 
-        : 'bg-gradient-to-br from-white via-red-50 to-white'
-    } text-white min-h-screen font-sans transition-colors duration-300 relative overflow-x-hidden`}>
-      <MatrixRain />
-      <motion.div
-        className="fixed inset-0 z-[-1]"
-        style={{
-          background: useTransform(
-            scrollYProgress,
-            [0, 0.5, 1],
-            isDarkMode
-              ? [
-                  "linear-gradient(to bottom right, #000000, #020617, #000000)",
-                  "linear-gradient(to bottom right, #000000, #172554, #000000)",
-                  "linear-gradient(to bottom right, #000000, #1e3a8a, #000000)"
-                ]
-              : [
-                  "linear-gradient(to bottom right, #ffffff, #eff6ff, #ffffff)",
-                  "linear-gradient(to bottom right, #ffffff, #dbeafe, #ffffff)",
-                  "linear-gradient(to bottom right, #ffffff, #bfdbfe, #ffffff)"
-                ]
-          ),
-        }}
-      />
-      
-      
-      <main className="relative">
-        <motion.button
-          onClick={toggleTheme}
-          className={`fixed top-4 left-4 p-2 rounded-full z-50 ${
-            isDarkMode ? 'bg-white text-black' : 'bg-gray-800 text-white'
-          }`}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-        >
-          {isDarkMode ? <Sun size={24} /> : <Moon size={24} />}
-        </motion.button>
+    <>
+      <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      </Head>
+      <div className={`${
+        isDarkMode 
+          ? 'bg-gradient-to-br from-black via-blue-950 to-black' 
+          : 'bg-gradient-to-br from-white via-red-50 to-white'
+      } text-white min-h-screen font-sans transition-colors duration-300 relative overflow-x-hidden`}>
+        <MatrixRain />
+        <motion.div
+          className="fixed inset-0 z-[-1]"
+          style={{
+            background: useTransform(
+              scrollYProgress,
+              [0, 0.5, 1],
+              isDarkMode
+                ? [
+                    "linear-gradient(to bottom right, #000000, #020617, #000000)",
+                    "linear-gradient(to bottom right, #000000, #172554, #000000)",
+                    "linear-gradient(to bottom right, #000000, #1e3a8a, #000000)"
+                  ]
+                : [
+                    "linear-gradient(to bottom right, #ffffff, #eff6ff, #ffffff)",
+                    "linear-gradient(to bottom right, #ffffff, #dbeafe, #ffffff)",
+                    "linear-gradient(to bottom right, #ffffff, #bfdbfe, #ffffff)"
+                  ]
+            ),
+          }}
+        />
+        
+        
+        <main className="relative">
+          <motion.button
+            onClick={toggleTheme}
+            className={`fixed top-4 left-4 p-2 rounded-full z-50 ${
+              isDarkMode ? 'bg-white text-black' : 'bg-gray-800 text-white'
+            }`}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+          >
+            {isDarkMode ? <Sun size={24} /> : <Moon size={24} />}
+          </motion.button>
 
-        <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 p-4 z-40 bg-gray-700 bg-opacity-60 backdrop-blur-sm rounded-md">
-          <ul className="flex space-x-4">
-            {['HOME', 'ABOUT', 'EDUCATION', 'EXPERIENCE', 'SKILLS', 'PROJECTS', 'CERTIFICATIONS'].map((item) => (
-              <li key={item}>
-                <motion.a
-                  href={`#${item.toLowerCase()}`}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    scrollToSection(item.toLowerCase());
-                  }}
-                  className={`text-sm font-medium ${
-                    isDarkMode 
-                      ? 'hover:text-pink-400' 
-                      : 'hover:text-orange-400'
-                  } transition-colors ${
-                    activeSection === item.toLowerCase() 
-                      ? isDarkMode ? 'text-pink-500' : 'text-red-500'
-                      : isDarkMode ? 'text-gray-300' : 'text-white'
-                  }`}
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  {item}
-                </motion.a>
-              </li>
-            ))}
-          </ul>
-        </nav>
+          <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 p-4 z-50 bg-gray-700 bg-opacity-60 backdrop-blur-sm rounded-md">
+            <ul className="flex space-x-4">
+              {['HOME', 'ABOUT', 'EDUCATION', 'EXPERIENCE', 'SKILLS', 'PROJECTS', 'CERTIFICATIONS'].map((item) => (
+                <li key={item}>
+                  <motion.a
+                    href={`#${item.toLowerCase()}`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      scrollToSection(item.toLowerCase());
+                    }}
+                    className={`text-sm font-medium ${
+                      isDarkMode 
+                        ? 'hover:text-pink-400' 
+                        : 'hover:text-orange-400'
+                    } transition-colors ${
+                      activeSection === item.toLowerCase() 
+                        ? isDarkMode ? 'text-pink-500' : 'text-red-500'
+                        : isDarkMode ? 'text-gray-300' : 'text-white'
+                    }`}
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    {item}
+                  </motion.a>
+                </li>
+              ))}
+            </ul>
+          </nav>
 
-        <section id="home" className="min-h-screen flex items-center justify-center">
-          <div className="text-center z-10 relative" ref={scope}>
-            <AnimatePresence mode="wait">
-              {showHello ? (
-                <motion.h1
-                  key="hello"
-                  initial={{ opacity: 0, width: 0 }}
-                  animate={{ opacity: 1, width: "auto" }}
-                  transition={{ duration: 0.7, ease: "linear" }}
-                  exit={{ opacity: 0, y: -50 }}
-                  className={`text-4xl sm:text-6xl font-bold mb-4 bg-clip-text text-transparent ${
-                    isDarkMode 
-                      ? 'bg-gradient-to-r from-pink-500 to-violet-500'
-                      : 'bg-gradient-to-r from-red-600 to-orange-400'
-                  } overflow-hidden whitespace-nowrap inline-block`}
-                >
-                  HELLO WORLD
-                </motion.h1>
-              ) : (
-                <motion.div
-                  key="intro"
-                  initial={{ opacity: 0, y: 50 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.7 }}
-                >
-                  <motion.h2
+          <section id="home" className="min-h-screen flex items-center justify-center px-4">
+            <div className="text-center z-10 relative" ref={scope}>
+              <AnimatePresence mode="wait">
+                {showHello ? (
+                  <motion.h1
+                    key="hello"
                     initial={{ opacity: 0, width: 0 }}
                     animate={{ opacity: 1, width: "auto" }}
-                    transition={{ duration: 2, ease: "easeInOut" }}
+                    transition={{ duration: 0.7, ease: "linear" }}
+                    exit={{ opacity: 0, y: -50 }}
                     className={`text-4xl sm:text-6xl font-bold mb-4 bg-clip-text text-transparent ${
                       isDarkMode 
                         ? 'bg-gradient-to-r from-pink-500 to-violet-500'
                         : 'bg-gradient-to-r from-red-600 to-orange-400'
                     } overflow-hidden whitespace-nowrap inline-block`}
                   >
-                    WELCOME TO MY PORTFOLIO!
-                  </motion.h2>
-                  <h2 className={`text-3xl sm:text-5xl font-bold mb-4 bg-clip-text text-transparent ${
-                    isDarkMode 
-                      ? 'bg-gradient-to-r from-pink-500 to-violet-500'
-                      : 'bg-gradient-to-r from-red-600 to-orange-400'
-                  }`}>
-                    Fahad Khan
-                  </h2>
-                  <p className={`text-xl sm:text-2xl ${
-                    isDarkMode ? 'text-gray-300' : 'text-black'
-                  }`}>
-                    Computer Science Graduate | Full Stack Engineer
-                  </p>
-                  <motion.button
-                    onClick={() => scrollToSection('contact')}
-                    className={`mt-8 px-8 py-3 rounded-lg text-xl ${
-                      isDarkMode
-                        ? 'bg-gradient-to-r from-pink-500 to-violet-500 hover:from-pink-600 hover:to-violet-600'
-                        : 'bg-gradient-to-r from-red-600 to-orange-400 hover:from-red-700 hover:to-orange-500'
-                    } text-white font-semibold`}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    LET'S CONNECT!
-                  </motion.button>
+                    HELLO WORLD
+                  </motion.h1>
+                ) : (
                   <motion.div
-                    animate={{
-                      y: [0, -10, 0],
-                    }}
-                    transition={{
-                      duration: 1.5,
-                      repeat: Infinity,
-                      repeatType: 'reverse',
-                    }}
-                    className="mt-16 cursor-pointer z-10 flex justify-center"
-                    onClick={() => scrollToSection('about')}
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
+                    key="intro"
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.7 }}
                   >
-                    <ChevronDown size={40} className={`${
-                      isDarkMode ? 'text-pink-500' : 'text-orange-500'
-                    }`} />
+                    <motion.h2
+                      initial={{ opacity: 0, width: 0 }}
+                      animate={{ opacity: 1, width: "auto" }}
+                      transition={{ duration: 2, ease: "easeInOut" }}
+                      className={`text-4xl sm:text-6xl font-bold mb-4 bg-clip-text text-transparent ${
+                        isDarkMode 
+                          ? 'bg-gradient-to-r from-pink-500 to-violet-500'
+                          : 'bg-gradient-to-r from-red-600 to-orange-400'
+                      } overflow-hidden whitespace-nowrap inline-block`}
+                    >
+                      WELCOME TO MY PORTFOLIO!
+                    </motion.h2>
+                    <h2 className={`text-3xl sm:text-5xl font-bold mb-4 bg-clip-text text-transparent ${
+                      isDarkMode 
+                        ? 'bg-gradient-to-r from-pink-500 to-violet-500'
+                        : 'bg-gradient-to-r from-red-600 to-orange-400'
+                    }`}>
+                      Fahad Khan
+                    </h2>
+                    <p className={`text-xl sm:text-2xl ${
+                      isDarkMode ? 'text-gray-300' : 'text-black'
+                    }`}>
+                      Computer Science Graduate | Full Stack Engineer
+                    </p>
+                    <motion.button
+                      onClick={() => scrollToSection('contact')}
+                      className={`mt-8 px-8 py-3 rounded-lg text-xl ${
+                        isDarkMode
+                          ? 'bg-gradient-to-r from-pink-500 to-violet-500 hover:from-pink-600 hover:to-violet-600'
+                          : 'bg-gradient-to-r from-red-600 to-orange-400 hover:from-red-700 hover:to-orange-500'
+                      } text-white font-semibold`}
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      LET'S CONNECT!
+                    </motion.button>
+                    <motion.div
+                      animate={{
+                        y: [0, -10, 0],
+                      }}
+                      transition={{
+                        duration: 1.5,
+                        repeat: Infinity,
+                        repeatType: 'reverse',
+                      }}
+                      className="mt-16 cursor-pointer z-10 flex justify-center"
+                      onClick={() => scrollToSection('about')}
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.9 }}
+                    >
+                      <ChevronDown size={40} className={`${
+                        isDarkMode ? 'text-pink-500' : 'text-orange-500'
+                      }`} />
+                    </motion.div>
                   </motion.div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-        </section>
+                )}
+              </AnimatePresence>
+            </div>
+          </section>
 
-        <Section id="about" icon={User} title="About Me">
-          <div className="flex flex-col md:flex-row items-center md:items-start gap-8">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.5 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5 }}
-              className="relative aspect-square w-full md:w-[92rem]"
-            >
-              <Image
-                src="/images/pfp.jpg"
-                alt="Fahad Khan"
-                fill
-                className={`rounded-full border-4 object-cover ${isDarkMode ? 'border-pink-500' : 'border-orange-500'}`}
-                style={{ objectFit: 'cover' }}
+          <Section id="about" icon={User} title="About Me">
+            <div className="flex flex-col md:flex-row items-center md:items-start gap-8">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.5 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5 }}
+                className="relative aspect-square w-full md:w-[92rem]"
+              >
+                <Image
+                  src="/images/pfp.jpg"
+                  alt="Fahad Khan"
+                  fill
+                  className={`rounded-full border-4 object-cover ${isDarkMode ? 'border-pink-500' : 'border-orange-500'}`}
+                  style={{ objectFit: 'cover' }}
+                />
+              </motion.div>
+              <div>
+                <motion.p
+                  initial={{ opacity: 0, x: -50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                  className={`text-lg leading-relaxed mb-4 ${
+                    isDarkMode ? 'text-gray-300' : 'text-black'
+                  }`}
+                >
+                  I'm a passionate Computer Science graduate with a keen interest in full-stack development, cloud solutions, and artificial intelligence. 
+                  With a strong foundation in algorithms, data structures, and software engineering principles, I strive to create 
+                  efficient and innovative solutions to complex problems. My goal is to contribute to cutting-edge projects that 
+                  push the boundaries of technology and make a positive impact in the IT industry.
+                </motion.p>
+                <motion.p
+                  initial={{ opacity: 0, x: -50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5, delay: 0.4 }}
+                  className={`text-lg leading-relaxed mb-4 ${
+                    isDarkMode ? 'text-gray-300' : 'text-black'
+                  }`}
+                >
+                  I've gained hands-on experience as a Full Stack Systems Administrator and Junior Software Developer, 
+                  working on front-end and back-end projects with frameworks like Django and Vue.js. 
+                  With certifications in AWS and ITIL, I'm passionate about building innovative solutions and thrive in collaborative, 
+                  fast-paced environments.
+                </motion.p>
+                <motion.p
+                  initial={{ opacity: 0, x: -50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5, delay: 0.6 }}
+                  className={`text-lg leading-relaxed ${
+                    isDarkMode ? 'text-gray-300' : 'text-black'
+                  }`}
+                >
+                  When I'm not coding, you can find me exploring new attractions and restaurants, playing sports such as basketball, badminton, and volleyball.
+                  Occasionally, I also like engaging in friendly networking events and competitions such as local hackathons. I believe in continuous learning and am always excited 
+                  to take on new challenges in the ever-evolving world of technology.
+                </motion.p>
+              </div>
+            </div>
+          </Section>
+
+          <Section id="education" icon={GraduationCap} title="Education">
+            <div className="space-y-4">
+              <EducationItem
+                degree="Bachelor of Science (Honours) in Computer Science"
+                school="Brock University"
+                year="2019 - 2024"
+                description="Graduated with Honors degree. Specialized in practices such as Machine Learning, Data Structures, Algorithms and Database Administration."
               />
-            </motion.div>
-            <div>
-              <motion.p
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                className={`text-lg leading-relaxed mb-4 ${
-                  isDarkMode ? 'text-gray-300' : 'text-black'
-                }`}
-              >
-                I'm a passionate Computer Science graduate with a keen interest in full-stack development, cloud solutions, and artificial intelligence. 
-                With a strong foundation in algorithms, data structures, and software engineering principles, I strive to create 
-                efficient and innovative solutions to complex problems. My goal is to contribute to cutting-edge projects that 
-                push the boundaries of technology and make a positive impact in the IT industry.
-              </motion.p>
-              <motion.p
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.4 }}
-                className={`text-lg leading-relaxed mb-4 ${
-                  isDarkMode ? 'text-gray-300' : 'text-black'
-                }`}
-              >
-                I've gained hands-on experience as a Full Stack Systems Administrator and Junior Software Developer, 
-                working on front-end and back-end projects with frameworks like Django and Vue.js. 
-                With certifications in AWS and ITIL, I'm passionate about building innovative solutions and thrive in collaborative, 
-                fast-paced environments.
-              </motion.p>
-              <motion.p
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.6 }}
-                className={`text-lg leading-relaxed ${
-                  isDarkMode ? 'text-gray-300' : 'text-black'
-                }`}
-              >
-                When I'm not coding, you can find me exploring new attractions and restaurants, playing sports such as basketball, badminton, and volleyball.
-                Occasionally, I also like engaging in friendly networking events and competitions such as local hackathons. I believe in continuous learning and am always excited 
-                to take on new challenges in the ever-evolving world of technology.
-              </motion.p>
+              <EducationItem
+                degree="High School Diploma"
+                school="David Suzuki Secondary School"
+                year="2016 - 2019"
+                description=""
+              />
             </div>
-          </div>
-        </Section>
+          </Section>
 
-        <Section id="education" icon={GraduationCap} title="Education">
-          <div className="space-y-4">
-            <EducationItem
-              degree="Bachelor of Science (Honours) in Computer Science"
-              school="Brock University"
-              year="2019 - 2024"
-              description="Graduated with Honors degree. Specialized in practices such as Machine Learning, Data Structures, Algorithms and Database Administration."
-            />
-            <EducationItem
-              degree="High School Diploma"
-              school="David Suzuki Secondary School"
-              year="2016 - 2019"
-              description=""
-            />
-          </div>
-        </Section>
-
-        <Section id="experience" icon={Briefcase} title="Work Experience">
-          <div className="space-y-6">
-          <ExperienceItem
-              title="AI/ML Software Engineer"
-              company="G2i"
-              period="November 2024 - Present"
-              responsibilities={[
-                "Collaborated with annotation teams to process 10,000+ data points, leveraging NLP techniques like vectorization and entity recognition to create high-quality datasets that enhanced model accuracy and performance.",
-                "Optimized AI-generated code by developing robust test cases, resolving 95% of coding challenges, and creating clear summaries, gaining expertise in LLM fine-tuning and RAG frameworks.",
-                "Designed and deployed scalable solutions using Python, FastAPI, Docker, and AWS, seamlessly integrating AI technologies to improve workflows and deliver superior outcomes."
-              ]}
-            />
+          <Section id="experience" icon={Briefcase} title="Work Experience">
+            <div className="space-y-6">
             <ExperienceItem
-              title="Full Stack Systems Administrator"
-              company="Civiconnect"
-              period="May 2022 - August 2022"
-              responsibilities={[
-                "Developed both the front-end and back-end implementation of websites by primarily utilizing the Python language through Django and Flask frameworks to facilitate rapid web applications development for business clients.",
-                "Collaborated with the system admin, web development and product management team by regularly attending sprint meetings to create an appropriate team environment and professionalism.",
-                "Performed deployment for final cliental websites by linking the domain name to the IP address of the server and utilizing AWS and Google Cloud services to ensure website accessibility for all users."
-              ]}
-            />
-            <ExperienceItem
-              title="Junior Software Developer"
-              company="Edge Factor"
-              period="September 2021 - December 2021"
-              responsibilities={[
-                "Troubleshooted various bugs and issues by applying knowledge of a wide range of web technologies such as AWS, .NET Core, JavaScript, Vue.js, HTML, CSS, MySQL, and NoSQL to learn and satisfy front-end and back-end user-experience.",
-                "Optimized SQL queries of hundreds of thousands of data by using software applications such as MySQL Workbench to improve and maintain a flexible connection between the Edge Factor website, Admin, and its databases.",
-                "Assisted senior developers as well as the Product Management and Workforce team with the design, development, and execution process of CI/CD pipelines and automated workflows by planning on multiple ways for approaching a certain task to ensure quality and an appropriate team environment."
-              ]}
-            />
-          </div>
-        </Section>
-
-        <Section id="skills" icon={FileCode} title="Technical Skills">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.5 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5 }}
-              className="flex flex-col items-center justify-center p-8 rounded-lg gap-8"
-            >
-              <FileCode size={150} className={`${isDarkMode ? 'text-pink-500' : 'text-red-500'}`} />
-              <Database size={150} className={`${isDarkMode ? 'text-pink-500' : 'text-red-500'}`} />
-              <Cpu size={150} className={`${isDarkMode ? 'text-pink-500' : 'text-red-500'}`} />
-            </motion.div>
-            <div className="grid grid-cols-2 gap-4">
-              <SkillCategory title="Languages" skills={['JavaScript', 'Python', 'Java', 'C++', 'SQL']} />
-              <SkillCategory title="Frontend" skills={['React', 'Vue.js', 'HTML5', 'CSS3', 'Tailwind CSS']} />
-              <SkillCategory title="Backend" skills={['Node.js', 'Express', 'Django', 'RESTful APIs']} />
-              <SkillCategory title="Databases" skills={['MongoDB', 'PostgreSQL', 'MySQL']} />
-              <SkillCategory title="DevOps" skills={['Git', 'Docker', 'CI/CD', 'AWS']} />
-              <SkillCategory title="Other" skills={['Machine Learning', 'Data Structures', 'Algorithms']} />
+                title="AI/ML Software Engineer"
+                company="G2i"
+                period="November 2024 - Present"
+                responsibilities={[
+                  "Collaborated with annotation teams to process 10,000+ data points, leveraging NLP techniques like vectorization and entity recognition to create high-quality datasets that enhanced model accuracy and performance.",
+                  "Optimized AI-generated code by developing robust test cases, resolving 95% of coding challenges, and creating clear summaries, gaining expertise in LLM fine-tuning and RAG frameworks.",
+                  "Designed and deployed scalable solutions using Python, FastAPI, Docker, and AWS, seamlessly integrating AI technologies to improve workflows and deliver superior outcomes."
+                ]}
+              />
+              <ExperienceItem
+                title="Full Stack Systems Administrator"
+                company="Civiconnect"
+                period="May 2022 - August 2022"
+                responsibilities={[
+                  "Developed both the front-end and back-end implementation of websites by primarily utilizing the Python language through Django and Flask frameworks to facilitate rapid web applications development for business clients.",
+                  "Collaborated with the system admin, web development and product management team by regularly attending sprint meetings to create an appropriate team environment and professionalism.",
+                  "Performed deployment for final cliental websites by linking the domain name to the IP address of the server and utilizing AWS and Google Cloud services to ensure website accessibility for all users."
+                ]}
+              />
+              <ExperienceItem
+                title="Junior Software Developer"
+                company="Edge Factor"
+                period="September 2021 - December 2021"
+                responsibilities={[
+                  "Troubleshooted various bugs and issues by applying knowledge of a wide range of web technologies such as AWS, .NET Core, JavaScript, Vue.js, HTML, CSS, MySQL, and NoSQL to learn and satisfy front-end and back-end user-experience.",
+                  "Optimized SQL queries of hundreds of thousands of data by using software applications such as MySQL Workbench to improve and maintain a flexible connection between the Edge Factor website, Admin, and its databases.",
+                  "Assisted senior developers as well as the Product Management and Workforce team with the design, development, and execution process of CI/CD pipelines and automated workflows by planning on multiple ways for approaching a certain task to ensure quality and an appropriate team environment."
+                ]}
+              />
             </div>
-          </div>
-        </Section>
+          </Section>
 
-        <Section id="projects" icon={Layers} title="Projects">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <ProjectCard
-              title="Niagara Museum Interactive Timeline System"
-              description="Developed an interactive timeline system for the Niagara Artifacts Museum using Python, HTML, CSS, and JavaScript, enabling visitors to explore exhibits and resources in a user-friendly digital format. Leveraged agile methodologies and CI/CD pipelines for rapid, reliable delivery."
-              technologies={['Python', 'HTML', 'MongoDB', 'JavaScript']}
-              link="https://github.com/bit-yottabyte/COSC-4P02-Project"
-              image="https://placehold.co/300x300"
-            />
-            <ProjectCard
-              title="Conversational AI System"
-              description="Developed a generative AI chatbot using FastAPI, LangChain, and Azure OpenAI for real-time conversations. Leveraged prompt engineering and the RAG framework to enhance context and scalability, gaining expertise in API deployment and cloud AI solutions."
-              technologies={['Python', 'Microsoft Azure', 'OpenAI', 'Langchain']}
-              link="nothing"
-              image="https://placehold.co/400x200"
-            />
-            <ProjectCard
-              title="Post-Secondary Plan Program"
-              description="Created a C++ program for Brock University students, using topological sorting to optimize course planning with directed and undirected graphs, providing personalized and efficient academic guidance."
-              technologies={['C++']}
-              link="https://github.com/faeskhan/Post-Secondary-Plan-Program"
-              image="https://placehold.co/400x200"
-            />
-            <ProjectCard
-              title="Berrylush Farms Website"
-              description="Developed Berrylush Farms, a mock website for a strawberry farmhouse business, using Python, HTML, CSS, JavaScript, and AWS to showcase products and services in a professional and engaging way."
-              technologies={['Python', 'Django', 'HTML', 'Amazon Web Services (AWS)']}
-              link="https://github.com/faeskhan/berrylush"
-              image="https://placehold.co/400x200"
-            />
-          </div>
-        </Section>
+          <Section id="skills" icon={FileCode} title="Technical Skills">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.5 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5 }}
+                className="flex flex-col items-center justify-center p-8 rounded-lg gap-8"
+              >
+                <FileCode size={150} className={`${isDarkMode ? 'text-pink-500' : 'text-red-500'}`} />
+                <Database size={150} className={`${isDarkMode ? 'text-pink-500' : 'text-red-500'}`} />
+                <Cpu size={150} className={`${isDarkMode ? 'text-pink-500' : 'text-red-500'}`} />
+              </motion.div>
+              <div className="grid grid-cols-2 gap-4">
+                <SkillCategory title="Languages" skills={['JavaScript', 'Python', 'Java', 'C++', 'SQL']} />
+                <SkillCategory title="Frontend" skills={['React', 'Vue.js', 'HTML5', 'CSS3', 'Tailwind CSS']} />
+                <SkillCategory title="Backend" skills={['Node.js', 'Express', 'Django', 'RESTful APIs']} />
+                <SkillCategory title="Databases" skills={['MongoDB', 'PostgreSQL', 'MySQL']} />
+                <SkillCategory title="DevOps" skills={['Git', 'Docker', 'CI/CD', 'AWS']} />
+                <SkillCategory title="Other" skills={['Machine Learning', 'Data Structures', 'Algorithms']} />
+              </div>
+            </div>
+          </Section>
 
-        <Section id="certifications" icon={Award} title="Certifications">
-          <div className="space-y-4">
-            <CertificationItem
-              title="AWS Certified Cloud Architect"
-              organization="Amazon Web Services"
-              date="2023"
-            />
-            <CertificationItem
-              title="Python Django Certified Developer"
-              organization="Udemy"
-              date="2022"
-            />
-            <CertificationItem
-              title="ITIL Service Design (ITIL-SD)"
-              organization="ICTC-CTIC"
-              date="2022"
-            />
-          </div>
-        </Section>
+          <Section id="projects" icon={Layers} title="Projects">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <ProjectCard
+                title="Niagara Museum Interactive Timeline System"
+                description="Developed an interactive timeline system for the Niagara Artifacts Museum using Python, HTML, CSS, and JavaScript, enabling visitors to explore exhibits and resources in a user-friendly digital format. Leveraged agile methodologies and CI/CD pipelines for rapid, reliable delivery."
+                technologies={['Python', 'HTML', 'MongoDB', 'JavaScript']}
+                link="https://github.com/bit-yottabyte/COSC-4P02-Project"
+                image="https://placehold.co/300x300"
+              />
+              <ProjectCard
+                title="Conversational AI System"
+                description="Developed a generative AI chatbot using FastAPI, LangChain, and Azure OpenAI for real-time conversations. Leveraged prompt engineering and the RAG framework to enhance context and scalability, gaining expertise in API deployment and cloud AI solutions."
+                technologies={['Python', 'Microsoft Azure', 'OpenAI', 'Langchain']}
+                link="nothing"
+                image="https://placehold.co/400x200"
+              />
+              <ProjectCard
+                title="Post-Secondary Plan Program"
+                description="Created a C++ program for Brock University students, using topological sorting to optimize course planning with directed and undirected graphs, providing personalized and efficient academic guidance."
+                technologies={['C++']}
+                link="https://github.com/faeskhan/Post-Secondary-Plan-Program"
+                image="https://placehold.co/400x200"
+              />
+              <ProjectCard
+                title="Berrylush Farms Website"
+                description="Developed Berrylush Farms, a mock website for a strawberry farmhouse business, using Python, HTML, CSS, JavaScript, and AWS to showcase products and services in a professional and engaging way."
+                technologies={['Python', 'Django', 'HTML', 'Amazon Web Services (AWS)']}
+                link="https://github.com/faeskhan/berrylush"
+                image="https://placehold.co/400x200"
+              />
+            </div>
+          </Section>
 
-        <motion.div 
-          id="contact"
-          className="py-20 px-4 md:px-8"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <div className="max-w-4xl mx-auto">
-            <motion.div className="flex items-center justify-center mb-8">
-              <Mail size={32} className={`${
-                isDarkMode ? 'text-pink-500' : 'text-orange-500'
-              } mr-4`} />
-              <h2 className={`text-3xl font-bold bg-clip-text text-transparent ${
-                isDarkMode 
-                  ? 'bg-gradient-to-r from-pink-500 to-violet-500'
-                  : 'bg-gradient-to-r from-red-600 to-orange-400'
-              }`}>
-                GET IN TOUCH!
-              </h2>
-            </motion.div>
-            <ContactForm />
-          </div>
-        </motion.div>
+          <Section id="certifications" icon={Award} title="Certifications">
+            <div className="space-y-4">
+              <CertificationItem
+                title="AWS Certified Cloud Architect"
+                organization="Amazon Web Services"
+                date="2023"
+              />
+              <CertificationItem
+                title="Python Django Certified Developer"
+                organization="Udemy"
+                date="2022"
+              />
+              <CertificationItem
+                title="ITIL Service Design (ITIL-SD)"
+                organization="ICTC-CTIC"
+                date="2022"
+              />
+            </div>
+          </Section>
 
-        <div className="h-80"></div>
+          <motion.div 
+            id="contact"
+            className="py-20 px-4 md:px-8"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <div className="max-w-4xl mx-auto">
+              <motion.div className="flex items-center justify-center mb-8">
+                <Mail size={32} className={`${
+                  isDarkMode ? 'text-pink-500' : 'text-orange-500'
+                } mr-4`} />
+                <h2 className={`text-3xl font-bold bg-clip-text text-transparent ${
+                  isDarkMode 
+                    ? 'bg-gradient-to-r from-pink-500 to-violet-500'
+                    : 'bg-gradient-to-r from-red-600 to-orange-400'
+                }`}>
+                  GET IN TOUCH!
+                </h2>
+              </motion.div>
+              <ContactForm />
+            </div>
+          </motion.div>
 
-        <footer className="bg-gray-800 py-8 text-center">
-          <div className="icon-container">
-            <motion.a
-              href="https://github.com/faeskhan"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-400 hover:text-white transition-colors"
-              whileHover={{ scale: 1.2, rotate: 360 }}
-              whileTap={{ scale: 0.9 }}
-            >
-              <Github size={24} />
-            </motion.a>
-            <motion.a
-              href="https://linkedin.com/in/fahadkhan01"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-400 hover:text-white transition-colors"
-              whileHover={{ scale: 1.2, rotate: 360 }}
-              whileTap={{ scale: 0.9 }}
-            >
-              <Linkedin size={24} />
-            </motion.a>
-            <motion.a
-              href="mailto:faeskhan@gmail.com"
-              className="text-gray-400 hover:text-white transition-colors"
-              whileHover={{ scale: 1.2, rotate: 360 }}
-              whileTap={{ scale: 0.9 }}
-            >
-              <Mail size={24} />
-            </motion.a>
-          </div>
-          <p className="text-gray-400">&copy; 2024 Fahad Khan. All rights reserved.</p>
-        </footer>
-      </main>
-    </div>
+          <div className="h-80"></div>
+
+          <footer className="bg-gray-800 py-8 text-center">
+            <div className="icon-container">
+              <motion.a
+                href="https://github.com/faeskhan"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-white transition-colors"
+                whileHover={{ scale: 1.2, rotate: 360 }}
+                whileTap={{ scale: 0.9 }}
+              >
+                <Github size={24} />
+              </motion.a>
+              <motion.a
+                href="https://linkedin.com/in/fahadkhan01"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-white transition-colors"
+                whileHover={{ scale: 1.2, rotate: 360 }}
+                whileTap={{ scale: 0.9 }}
+              >
+                <Linkedin size={24} />
+              </motion.a>
+              <motion.a
+                href="mailto:faeskhan@gmail.com"
+                className="text-gray-400 hover:text-white transition-colors"
+                whileHover={{ scale: 1.2, rotate: 360 }}
+                whileTap={{ scale: 0.9 }}
+              >
+                <Mail size={24} />
+              </motion.a>
+            </div>
+            <p className="text-gray-400">&copy; 2024 Fahad Khan. All rights reserved.</p>
+          </footer>
+        </main>
+      </div>
+    </>
   )
 }
 
