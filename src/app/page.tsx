@@ -77,7 +77,7 @@ export default function Portfolio() {
       isDarkMode 
         ? 'bg-gradient-to-br from-black via-blue-950 to-black' 
         : 'bg-gradient-to-br from-white via-red-50 to-white'
-    } text-white min-h-screen font-sans transition-colors duration-300 relative`}>
+    } text-white min-h-screen font-sans transition-colors duration-300 relative overflow-x-hidden`}>
       <MatrixRain />
       <motion.div
         className="fixed inset-0 z-[-1]"
@@ -99,24 +99,22 @@ export default function Portfolio() {
           ),
         }}
       />
-      <motion.button
-        onClick={toggleTheme}
-        className={`fixed top-4 left-4 p-2 rounded-full z-50 ${
-          isDarkMode ? 'bg-white text-black' : 'bg-gray-800 text-white'
-        }`}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-      >
-        {isDarkMode ? <Sun size={24} /> : <Moon size={24} />}
-      </motion.button>
-      <motion.div
-        className="fixed top-0 left-0 right-0 h-2 bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 transform-none z-50"
-        style={{ scaleX }}
-      />
+      
       
       <main className="relative">
-        <nav className="fixed top-0 right-0 p-4 z-40">
-          <ul className="flex space-x-4 rounded-lg px-6 py-3 bg-gray-700 bg-opacity-60 backdrop-blur-sm">
+        <motion.button
+          onClick={toggleTheme}
+          className={`fixed top-4 left-4 p-2 rounded-full z-50 ${
+            isDarkMode ? 'bg-white text-black' : 'bg-gray-800 text-white'
+          }`}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+        >
+          {isDarkMode ? <Sun size={24} /> : <Moon size={24} />}
+        </motion.button>
+
+        <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 p-4 z-40 bg-gray-700 bg-opacity-60 backdrop-blur-sm rounded-md">
+          <ul className="flex space-x-4">
             {['HOME', 'ABOUT', 'EDUCATION', 'EXPERIENCE', 'SKILLS', 'PROJECTS', 'CERTIFICATIONS'].map((item) => (
               <li key={item}>
                 <motion.a
@@ -307,6 +305,16 @@ export default function Portfolio() {
 
         <Section id="experience" icon={Briefcase} title="Work Experience">
           <div className="space-y-6">
+          <ExperienceItem
+              title="AI/ML Software Engineer"
+              company="G2i"
+              period="November 2024 - Present"
+              responsibilities={[
+                "Collaborated with annotation teams to process 10,000+ data points, leveraging NLP techniques like vectorization and entity recognition to create high-quality datasets that enhanced model accuracy and performance.",
+                "Optimized AI-generated code by developing robust test cases, resolving 95% of coding challenges, and creating clear summaries, gaining expertise in LLM fine-tuning and RAG frameworks.",
+                "Designed and deployed scalable solutions using Python, FastAPI, Docker, and AWS, seamlessly integrating AI technologies to improve workflows and deliver superior outcomes."
+              ]}
+            />
             <ExperienceItem
               title="Full Stack Systems Administrator"
               company="Civiconnect"
