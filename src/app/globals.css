@@ -103,10 +103,10 @@ img {
 /* Use media queries for responsive design */
 @media (max-width: 768px) {
   .text-4xl {
-    font-size: 2rem; /* Adjust font size for smaller screens */
+    font-size: 1.5rem; /* Adjust font size for smaller screens */
   }
   .sm\:text-6xl {
-    font-size: 3rem; /* Adjust font size for smaller screens */
+    font-size: 2rem; /* Adjust font size for smaller screens */
   }
   .flex {
     flex-direction: column; /* Stack elements vertically on smaller screens */
@@ -126,4 +126,51 @@ img {
   .min-h-screen {
     min-height: 100vh; /* Ensure full height on smaller screens */
   }
+  .arrow-button {
+    display: block; /* Ensure the arrow button is visible */
+    margin: 0 auto; /* Center the button */
+  }
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+    padding: 0.5rem 1rem; /* Adjust padding */
+    z-index: 50; /* Ensure it stays on top */
+  }
+  nav ul {
+    display: flex;
+    justify-content: center; /* Center the nav items */
+    flex-wrap: wrap; /* Allow items to wrap */
+    gap: 0.5rem; /* Space between items */
+  }
+  nav li {
+    flex: 1 1 auto; /* Allow items to grow and shrink */
+    text-align: center; /* Center text */
+  }
+  nav a {
+    font-size: 0.875rem; /* Smaller font size */
+    padding: 0.25rem 0.5rem; /* Adjust padding */
+  }
+}
+
+/* Center the icons in the footer */
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center items horizontally */
+  justify-content: center; /* Center items vertically */
+  text-align: center; /* Center text */
+}
+
+footer .icon-container {
+  display: flex;
+  justify-content: center; /* Center the icons */
+  gap: 1rem; /* Space between icons */
+  margin-bottom: 1rem; /* Space below the icons */
+}
+
+footer p {
+  margin-top: 0.5rem; /* Space above the footer text */
 }

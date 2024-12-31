@@ -434,7 +434,7 @@ export default function Portfolio() {
         <div className="h-80"></div>
 
         <footer className="bg-gray-800 py-8 text-center">
-          <div className="flex justify-center space-x-6 mb-4">
+          <div className="icon-container">
             <motion.a
               href="https://github.com/faeskhan"
               target="_blank"
