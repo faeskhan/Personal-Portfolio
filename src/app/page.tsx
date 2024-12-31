@@ -118,7 +118,7 @@ export default function Portfolio() {
             {isDarkMode ? <Sun size={24} /> : <Moon size={24} />}
           </motion.button>
 
-          <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 p-4 z-50 bg-gray-700 bg-opacity-60 backdrop-blur-sm rounded-md">
+          <nav className="fixed top-16 left-1/2 transform -translate-x-1/2 p-4 z-50 bg-gray-700 bg-opacity-60 backdrop-blur-sm rounded-md">
             <ul className="flex space-x-4">
               {['HOME', 'ABOUT', 'EDUCATION', 'EXPERIENCE', 'SKILLS', 'PROJECTS', 'CERTIFICATIONS'].map((item) => (
                 <li key={item}>
@@ -217,7 +217,7 @@ export default function Portfolio() {
                         repeat: Infinity,
                         repeatType: 'reverse',
                       }}
-                      className="mt-16 cursor-pointer z-10 flex justify-center"
+                      className="mt-16 cursor-pointer z-10 flex justify-center w-full"
                       onClick={() => scrollToSection('about')}
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.9 }}
